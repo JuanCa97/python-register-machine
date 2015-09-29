@@ -60,3 +60,35 @@ def shopping():
 	                        RESPONSE=True
 	else:
 		print "No existing products"
+
+def BILL():
+    BOXTWO=True
+    while BOXTWO==True:
+        print "1)Gold"
+        print "2)Silver"
+        print "3)Any"
+        CARD=raw_input("What kind of card do you have?: ")
+        try:
+            if CARD.isalpha()==False:
+                #ingreso de producto
+                if CARD=="1":
+					print "Gold"
+					print u"The client has a 5%  discount:"
+					print "The subtotal of the invoice is Q.%s" %(TOTALONE)
+					IVA = (TOTALONE*0.12)
+					DISCOUNT = (TOTALONE*0.05)
+					ALLTOTAL = TOTALONE + IVA - DISCOUNT
+					print "should: %s"%(TOTALONE)
+					print "______________________"
+					CLient_name = raw_input("Client name:  ")
+					nit = raw_input("NIT: ")
+					CASH = input("CASH :  ")
+					CHANGE = CASH - TOTALONE
+					print "__________________________"
+					print ("Price       %.2f\t") % TOTALONE
+					print ("IVA          %.2f\t") % IVA
+					print ("Total        %.2f\t") % ALLTOTAL
+					print ("CASH     %.2f\t") % CASH
+					print "__________________________"
+					print "CHANGE:   %s"%(CHANGE)
+					break
