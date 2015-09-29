@@ -139,6 +139,31 @@ while salir==False:
     print "2.) Compras"
     print "3.) factura"
     opmenu = raw_input("ingrese número de Menu: ")
+        try:
+	    if opmenu.isalpha()==False:
+		    if opmenu =="1":
+		        ingreso_productos()
+		        opcionmenu=raw_input("Desea volver al menu SI/NO: ")
+		        if opcionmenu.lower()=="si":
+		        	salir=False
+		        else:
+		            break
+		    elif opmenu =="2":
+
+		        TOTALONE= compras()
+		        print TOTALONE
+		        opcionmenu=raw_input("Desea volver al menu SI/NO: ")
+		        if opcionmenu.lower()=="si":
+		            salir=False
+		        else:
+		            break
+		    elif opmenu =="3":
+		        print factura()
+		        opcionmenu=raw_input("Desea vover al menu SI/NO: ")
+		        if opcionmenu.lower()=="si":
+		            salir=False
+		        else:
+		            break
                     print "should: ",ALLTOTAL
                     print ("______________________")
                     CLient_name = raw_input("Nombre Del Cliente: ")
@@ -191,3 +216,28 @@ while salir==False:
     print "2.) Compras"
     print "3.) factura"
     opmenu = raw_input("ingrese número de Menu: ")
+        try:
+	    if opmenu.isalpha()==False:
+		    if opmenu =="1":
+		        ingreso_productos()
+		        opcionmenu=raw_input("Desea volver al menu SI/NO: ")
+		        if opcionmenu.lower()=="si":
+		        	salir=False
+		        else:
+		            break
+		    elif opmenu =="2":
+
+		        TOTALONE= compras()
+		        print TOTALONE
+		        opcionmenu=raw_input("Desea volver al menu SI/NO: ")
+		        if opcionmenu.lower()=="si":
+		            salir=False
+		        else:
+		            break
+		    elif opmenu =="3":
+		        print factura()
+		        opcionmenu=raw_input("Desea vover al menu SI/NO: ")
+		        if opcionmenu.lower()=="si":
+		            salir=False
+		        else:
+		            break
