@@ -67,10 +67,23 @@ def shopping():
                             RisPONSE=False
                             return TOTAL
                         else:
-                            print "option invalidatis"
+                            print "option invalid"
                             RisPONSE=True
     else:
         print "No existing products"
+def ASD():
+    nit = raw_input("NIT: ")
+    CASH = input("CASH :  ")
+def LEP():
+    CHANGE = CASH - TOTALONE
+    print "__________________________"
+    print ("Price       %.2f\t") % TOTALONE
+    print ("IVA          %.2f\t") % IVA
+    print ("Total        %.2f\t") % ALLTOTAL
+    print ("CASH     %.2f\t") % CASH
+    print "__________________________"
+    print "CHANGE:   %s"%(CHANGE)
+    
 
 def BILL():
     limpiar()
@@ -92,18 +105,19 @@ def BILL():
                     ALLTOTAL = TOTALONE + IVA - DISCOUNT
                     print "should: %s"%(TOTALONE)
                     print "______________________"
-                    CLient_name = raw_input("Client name:  ")
-                    nit = raw_input("NIT: ")
-                    CASH = input("CASH :  ")
-                    CHANGE = CASH - TOTALONE
-                    print "__________________________"
-                    print ("Price       %.2f\t") % TOTALONE
-                    print ("IVA          %.2f\t") % IVA
-                    print ("Total        %.2f\t") % ALLTOTAL
-                    print ("CASH     %.2f\t") % CASH
-                    print "__________________________"
-                    print "CHANGE:   %s"%(CHANGE)
-                    break
+                    j = True
+                    while j == True:
+                        CLient_name = raw_input("Client name:  ")
+                        if CLient_name.isalpha()== True:
+                            ASD()
+                            break
+                            if CASH.isalpha() == False:
+                                LEP()
+                            else:
+                                "unrecognized data numeric"
+                        else:
+                            print "error"
+                            j = True
                 #compra
                 elif CARD=="2":
                     print "Silver"
