@@ -57,33 +57,29 @@ def shopping():
                     
                     print "article %s: quantity %s: subtotal invoice Q.%s "%(TheEMENT, QUANTITY,TOTAL )
                     RisPONSE=True
-                    while RisPONSE==True:
-                        FOLLOW=raw_input("To Stheect a different item y/n:")
-                        if FOLLOW.lower()=="y":
-                            BOXTWO=True
-                            RisPONSE=False
-                        elif FOLLOW.lower()=="n":
-                            BOXTWO=False
-                            RisPONSE=False
-                            return TOTAL
-                        else:
-                            print "option invalid"
-                            RisPONSE=True
-    else:
-        print "No existing products"
+                    FOLLOW=raw_input("To Stheect a different item y/n:")
+                    if FOLLOW.lower()=="y":
+                        BOXTWO=True
+                        RisPONSE=False
+                    elif FOLLOW.lower()=="n":
+                        BOXTWO=False
+                        RisPONSE=False
+                        return TOTAL
+                    else:
+                        print "option invalidatis"
+                        RisPONSE=True
+        else:
+            print "No existing products"
 def ASD():
-    nit = raw_input("NIT: ")
-    CASH = input("CASH :  ")
-def LEP():
-    CHANGE = CASH - TOTALONE
-    print "__________________________"
-    print ("Price       %.2f\t") % TOTALONE
-    print ("IVA          %.2f\t") % IVA
-    print ("Total        %.2f\t") % ALLTOTAL
-    print ("CASH     %.2f\t") % CASH
-    print "__________________________"
-    print "CHANGE:   %s"%(CHANGE)
-    
+    CASH = ""
+    while type(CASH) == str:
+        try:
+            #a = raw_input("entre al while")
+            CASH = int(raw_input("CASH :  "))
+        except Exception, e:
+            pass
+
+    return CASH
 
 def BILL():
     limpiar()
@@ -95,7 +91,7 @@ def BILL():
         CARD=raw_input("What kind of card do you have?: ")
         try:
             if CARD.isalpha()==False:
-                #ingriso of producto
+                #ingreso of producto
                 if CARD=="1":
                     print "Gold"
                     print u"The client has a 5%  discount:"
@@ -109,15 +105,24 @@ def BILL():
                     while j == True:
                         CLient_name = raw_input("Client name:  ")
                         if CLient_name.isalpha()== True:
-                            ASD()
-                            break
-                            if CASH.isalpha() == False:
-                                LEP()
-                            else:
-                                "unrecognized data numeric"
+                            nit = raw_input("NIT: ")
+                            CASH = ASD()
+                            CHANGE = CASH - TOTALONE
+                            print "__________________________"
+                            print ("Price       %.2f\t") % TOTALONE
+                            print ("IVA          %.2f\t") % IVA
+                            print ("Total        %.2f\t") % ALLTOTAL
+                            print ("CASH     %.2f\t") % CASH
+                            print "__________________________"
+                            print "CHANGE:   %s"%(CHANGE)
+                            j = False
+                            BOXTWO = False
+
+                                
                         else:
-                            print "error"
+                            print "esta malo"
                             j = True
+
                 #compra
                 elif CARD=="2":
                     print "Silver"
@@ -126,22 +131,23 @@ def BILL():
                     IVA = (TOTALONE*0.12)
                     DISCOUNT = (TOTALONE*0.02)
                     ALLTOTAL = TOTALONE + IVA - DISCOUNT
-                    # aqui comienza billción
                     print "should: ",ALLTOTAL
                     print ("______________________")
-                    CLient_name = raw_input("Name The Cliente: ")
-                    nit = raw_input("NIT: ")
-                    CASH = input("CASH :  ")
-                    CHANGE = CASH - ALLTOTAL
-                    print ("__________________________")
-                    print ("Price       %.2f\t") % TOTALONE
-                    print ("IVA          %.2f\t") % IVA
-                    print ("Total        %.2f\t") % ALLTOTAL
-                    print ("CASH     %.2f\t") % CASH
-                    print ("__________________________")
-                    print ("CHANGE:   "),CHANGE
-                    BOXTWO=False
-
+                    j = True
+                    while j == True:
+                        CLient_name = raw_input("Client name: ")
+                        if CLient_name.isalpha() == True:
+                            nit = raw_input("NIT: ")
+                            CASH = ASD()
+                            CHANGE = CASH - ALLTOTAL
+                            print ("__________________________")
+                            print ("Price       %.2f\t") % TOTALONE
+                            print ("IVA          %.2f\t") % IVA
+                            print ("Total        %.2f\t") % ALLTOTAL
+                            print ("CASH     %.2f\t") % CASH
+                            print ("__________________________")
+                            print ("CHANGE:   "),CHANGE
+                            BOXTWO=False
 #bill
                 elif CARD =="3":
                     IVA = (TOTALONE*0.12)
@@ -199,7 +205,7 @@ while salir==False:
                 else:
                     break
             elif opmenu =="2":
-                
+                limpiar()
                 TOTALONE= shopping()
                 print TOTALONE
                 opcionmenu=raw_input("To return to the menu y/n: ")
@@ -211,6 +217,7 @@ while salir==False:
             elif opmenu =="3":
                 
                 print BILL()
+                
                 opcionmenu=raw_input("To return to the menu y/n: ")
                 if opcionmenu.lower()=="y":
                     salir=False
