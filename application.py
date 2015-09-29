@@ -12,10 +12,12 @@ def insert_product():
     limpiar()
     BOX = True
     while BOX == True:
+        limpiar()
         OPTION =raw_input("You want to enter a product? y/n: ")
         if OPTION.isalpha()==True:
             if OPTION.lower()=="y":
                 while True:
+                    limpiar()
                     PRODUCT=raw_input("Insert a product: ")
                     if PRODUCT.isalpha():
                         break
@@ -175,6 +177,7 @@ while salir==False:
     try:
         if opmenu.isalpha()==False:
             if opmenu =="1":
+                
                 insert_product()
                 opcionmenu=raw_input("To return to the menu y/n: ")
                 if opcionmenu.lower()=="y":
@@ -182,15 +185,17 @@ while salir==False:
                 else:
                     break
             elif opmenu =="2":
-
+                
                 TOTALONE= shopping()
                 print TOTALONE
                 opcionmenu=raw_input("To return to the menu y/n: ")
                 if opcionmenu.lower()=="y":
+                    limpiar()
                     salir=False
                 else:
                     break
             elif opmenu =="3":
+                
                 print BILL()
                 opcionmenu=raw_input("To return to the menu y/n: ")
                 if opcionmenu.lower()=="y":
