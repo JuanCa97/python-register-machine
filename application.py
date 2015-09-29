@@ -164,6 +164,9 @@ while salir==False:
 		            salir=False
 		        else:
 		            break
+		            
+    except:
+		print"Hello"
                     print "should: ",ALLTOTAL
                     print ("______________________")
                     CLient_name = raw_input("Nombre Del Cliente: ")
@@ -241,3 +244,6 @@ while salir==False:
 		            salir=False
 		        else:
 		            break
+		            
+    except:
+		print"Hello"
