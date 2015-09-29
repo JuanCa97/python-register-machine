@@ -101,7 +101,7 @@ def BILL():
                     DISCOUNT = (TOTALONE*0.02)
                     ALLTOTAL = TOTALONE + IVA - DISCOUNT
                     # aqui comienza facturación
-                    
+
 #Factura
                 elif CARD =="3":
                     IVA = (TOTALONE*0.12)
@@ -129,6 +129,16 @@ def BILL():
         except:
             opcion3=True
 	print"Gracias por su compra, Regrese Pronto."
+
+	#menú
+salir=False
+while salir==False:
+    print "Caja Registradora"
+    print "¿Qué desea realizar?"
+    print "1.) Ingreso productos"
+    print "2.) Compras"
+    print "3.) factura"
+    opmenu = raw_input("ingrese número de Menu: ")
                     print "should: ",ALLTOTAL
                     print ("______________________")
                     CLient_name = raw_input("Nombre Del Cliente: ")
@@ -143,7 +153,7 @@ def BILL():
                     print ("__________________________")
                     print ("CHANGE:   "),CHANGE
                     BOXTWO=False
-                    
+
 #Factura
                 elif CARD =="3":
                     IVA = (TOTALONE*0.12)
@@ -171,3 +181,13 @@ def BILL():
         except:
             opcion3=True
 	print"Gracias por su compra, Regrese Pronto."
+
+	#menú
+salir=False
+while salir==False:
+    print "Caja Registradora"
+    print "¿Qué desea realizar?"
+    print "1.) Ingreso productos"
+    print "2.) Compras"
+    print "3.) factura"
+    opmenu = raw_input("ingrese número de Menu: ")
