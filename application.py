@@ -92,3 +92,26 @@ def BILL():
 					print "__________________________"
 					print "CHANGE:   %s"%(CHANGE)
 					break
+					#compra
+                elif CARD=="2":
+                    print "Silver"
+                    print "The client has a 2%  discount:"
+                    print "El subtotal de la factura esQ.%s"%(TOTALONE)
+                    IVA = (TOTALONE*0.12)
+                    DISCOUNT = (TOTALONE*0.02)
+                    ALLTOTAL = TOTALONE + IVA - DISCOUNT
+                    # aqui comienza facturación
+                    print "should: ",ALLTOTAL
+                    print ("______________________")
+                    CLient_name = raw_input("Nombre Del Cliente: ")
+                    nit = raw_input("NIT: ")
+                    CASH = input("CASH :  ")
+                    CHANGE = CASH - ALLTOTAL
+                    print ("__________________________")
+                    print ("Price       %.2f\t") % TOTALONE
+                    print ("IVA          %.2f\t") % IVA
+                    print ("Total        %.2f\t") % ALLTOTAL
+                    print ("CASH     %.2f\t") % CASH
+                    print ("__________________________")
+                    print ("CHANGE:   "),CHANGE
+                    BOXTWO=False
