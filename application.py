@@ -101,6 +101,34 @@ def BILL():
                     DISCOUNT = (TOTALONE*0.02)
                     ALLTOTAL = TOTALONE + IVA - DISCOUNT
                     # aqui comienza facturación
+                    
+#Factura
+                elif CARD =="3":
+                    IVA = (TOTALONE*0.12)
+                    ALLTOTAL = TOTALONE + IVA 
+                    #  aqui comienza facturación
+                    print "should: ",ALLTOTAL
+                    print ("______________________")
+                    CLient_name = raw_input("Client name:  ")
+                    nit = raw_input("NIT: ")
+
+                    CASH = input("CASH :  ")
+                    CHANGE = CASH - ALLTOTAL
+                    print ("__________________________")
+                    print ("Price       %.2f\t") % TOTALONE
+                    print ("IVA          %.2f\t") % IVA
+                    print ("Total        %.2f\t") % ALLTOTAL
+                    print ("CASH     %.2f\t") % CASH
+                    print ("__________________________")
+                    print ("CHANGE:   "),CHANGE
+                    BOXTWO=False
+                else:
+                    print "opcion no valida"
+            else:
+                print "solo se aceptan numeros"
+        except:
+            opcion3=True
+	print"Gracias por su compra, Regrese Pronto."
                     print "should: ",ALLTOTAL
                     print ("______________________")
                     CLient_name = raw_input("Nombre Del Cliente: ")
@@ -115,3 +143,31 @@ def BILL():
                     print ("__________________________")
                     print ("CHANGE:   "),CHANGE
                     BOXTWO=False
+                    
+#Factura
+                elif CARD =="3":
+                    IVA = (TOTALONE*0.12)
+                    ALLTOTAL = TOTALONE + IVA 
+                    #  aqui comienza facturación
+                    print "should: ",ALLTOTAL
+                    print ("______________________")
+                    CLient_name = raw_input("Client name:  ")
+                    nit = raw_input("NIT: ")
+
+                    CASH = input("CASH :  ")
+                    CHANGE = CASH - ALLTOTAL
+                    print ("__________________________")
+                    print ("Price       %.2f\t") % TOTALONE
+                    print ("IVA          %.2f\t") % IVA
+                    print ("Total        %.2f\t") % ALLTOTAL
+                    print ("CASH     %.2f\t") % CASH
+                    print ("__________________________")
+                    print ("CHANGE:   "),CHANGE
+                    BOXTWO=False
+                else:
+                    print "opcion no valida"
+            else:
+                print "solo se aceptan numeros"
+        except:
+            opcion3=True
+	print"Gracias por su compra, Regrese Pronto."
