@@ -118,7 +118,6 @@ def BILL():
                             j = False
                             BOXTWO = False
 
-                                
                         else:
                             print "esta malo"
                             j = True
