@@ -92,7 +92,7 @@ def BILL():
 					print "__________________________"
 					print "CHANGE:   %s"%(CHANGE)
 					break
-					#compra
+                #compra
                 elif CARD=="2":
                     print "Silver"
                     print "The client has a 2%  discount:"
@@ -101,72 +101,6 @@ def BILL():
                     DISCOUNT = (TOTALONE*0.02)
                     ALLTOTAL = TOTALONE + IVA - DISCOUNT
                     # aqui comienza facturación
-
-#Factura
-                elif CARD =="3":
-                    IVA = (TOTALONE*0.12)
-                    ALLTOTAL = TOTALONE + IVA 
-                    #  aqui comienza facturación
-                    print "should: ",ALLTOTAL
-                    print ("______________________")
-                    CLient_name = raw_input("Client name:  ")
-                    nit = raw_input("NIT: ")
-
-                    CASH = input("CASH :  ")
-                    CHANGE = CASH - ALLTOTAL
-                    print ("__________________________")
-                    print ("Price       %.2f\t") % TOTALONE
-                    print ("IVA          %.2f\t") % IVA
-                    print ("Total        %.2f\t") % ALLTOTAL
-                    print ("CASH     %.2f\t") % CASH
-                    print ("__________________________")
-                    print ("CHANGE:   "),CHANGE
-                    BOXTWO=False
-                else:
-                    print "opcion no valida"
-            else:
-                print "solo se aceptan numeros"
-        except:
-            opcion3=True
-	print"Gracias por su compra, Regrese Pronto."
-
-	#menú
-salir=False
-while salir==False:
-    print "Caja Registradora"
-    print "¿Qué desea realizar?"
-    print "1.) Ingreso productos"
-    print "2.) Compras"
-    print "3.) factura"
-    opmenu = raw_input("ingrese número de Menu: ")
-        try:
-	    if opmenu.isalpha()==False:
-		    if opmenu =="1":
-		        ingreso_productos()
-		        opcionmenu=raw_input("Desea volver al menu SI/NO: ")
-		        if opcionmenu.lower()=="si":
-		        	salir=False
-		        else:
-		            break
-		    elif opmenu =="2":
-
-		        TOTALONE= compras()
-		        print TOTALONE
-		        opcionmenu=raw_input("Desea volver al menu SI/NO: ")
-		        if opcionmenu.lower()=="si":
-		            salir=False
-		        else:
-		            break
-		    elif opmenu =="3":
-		        print factura()
-		        opcionmenu=raw_input("Desea vover al menu SI/NO: ")
-		        if opcionmenu.lower()=="si":
-		            salir=False
-		        else:
-		            break
-		            
-    except:
-		print"Hello"
                     print "should: ",ALLTOTAL
                     print ("______________________")
                     CLient_name = raw_input("Nombre Del Cliente: ")
@@ -210,7 +144,8 @@ while salir==False:
             opcion3=True
 	print"Gracias por su compra, Regrese Pronto."
 
-	#menú
+
+#menú
 salir=False
 while salir==False:
     print "Caja Registradora"
@@ -219,7 +154,7 @@ while salir==False:
     print "2.) Compras"
     print "3.) factura"
     opmenu = raw_input("ingrese número de Menu: ")
-        try:
+    try:
 	    if opmenu.isalpha()==False:
 		    if opmenu =="1":
 		        ingreso_productos()
@@ -244,6 +179,5 @@ while salir==False:
 		            salir=False
 		        else:
 		            break
-		            
     except:
 		print"Hello"
