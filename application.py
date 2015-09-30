@@ -39,6 +39,7 @@ def insert_product():
     for KEY in ARTICLis:
         print KEY,":",ARTICLis[KEY]
 
+
 def shopping():
     limpiar()
     if len(ARTICLis)>0:
