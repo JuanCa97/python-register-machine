@@ -7,7 +7,6 @@ import sys
 ARTICLis={}
 TOTALONE=06
 
-
 def insert_product():
     limpiar()
     BOX = True
