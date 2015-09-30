@@ -65,6 +65,7 @@ def shopping():
                         BOXTWO=False
                         RisPONSE=False
                         return TOTAL
+                        
                     else:
                         print "option invalidatis"
                         RisPONSE=True
@@ -118,6 +119,7 @@ def BILL():
                             j = False
                             BOXTWO = False
 
+                                
                         else:
                             print "esta malo"
                             j = True
@@ -130,6 +132,7 @@ def BILL():
                     IVA = (TOTALONE*0.12)
                     DISCOUNT = (TOTALONE*0.02)
                     ALLTOTAL = TOTALONE + IVA - DISCOUNT
+                    # aqui comienza billción
                     print "should: ",ALLTOTAL
                     print ("______________________")
                     j = True
@@ -146,7 +149,11 @@ def BILL():
                             print ("CASH     %.2f\t") % CASH
                             print ("__________________________")
                             print ("CHANGE:   "),CHANGE
+                            j = False
                             BOXTWO=False
+                        else:
+                            print "error"
+                            j = True
 #bill
                 elif CARD =="3":
                     IVA = (TOTALONE*0.12)
@@ -154,19 +161,26 @@ def BILL():
                     #  aqui comienza billción
                     print "should: ",ALLTOTAL
                     print ("______________________")
-                    CLient_name = raw_input("Client name:  ")
-                    nit = raw_input("NIT: ")
+                    j = True
+                    while j == True:
+                        CLient_name = raw_input("Client name:  ")
+                        if CLient_name.isalpha()== True:
+                            nit = raw_input("NIT: ")
+                            CASH = ASD()
+                            CHANGE = CASH - TOTALONE
 
-                    CASH = input("CASH :  ")
-                    CHANGE = CASH - ALLTOTAL
-                    print ("__________________________")
-                    print ("Price       %.2f\t") % TOTALONE
-                    print ("IVA          %.2f\t") % IVA
-                    print ("Total        %.2f\t") % ALLTOTAL
-                    print ("CASH     %.2f\t") % CASH
-                    print ("__________________________")
-                    print ("CHANGE:   "),CHANGE
-                    BOXTWO=False
+                            print ("__________________________")
+                            print ("Price       %.2f\t") % TOTALONE
+                            print ("IVA          %.2f\t") % IVA
+                            print ("Total        %.2f\t") % ALLTOTAL
+                            print ("CASH     %.2f\t") % CASH
+                            print ("__________________________")
+                            print ("CHANGE:   "),CHANGE
+                            j = False
+                            BOXTWO = False
+                        else:
+                            print "esta malo"
+                            j = True
                 else:
                     print "Option invalidates"
             else:
@@ -190,8 +204,7 @@ while salir==False:
     print "¿What would you do?"
     print "1.) Insert_product"
     print "2.) Shopping"
-    print "3.) Bill"
-    print "4.) Exit"
+    print "3.) Exit"
     opmenu = raw_input("insert numeric of Menu: ")
     try:
         if opmenu.isalpha()==False:
@@ -207,6 +220,7 @@ while salir==False:
                 limpiar()
                 TOTALONE= shopping()
                 print TOTALONE
+                print BILL()
                 opcionmenu=raw_input("To return to the menu y/n: ")
                 if opcionmenu.lower()=="y":
                     limpiar()
@@ -214,18 +228,8 @@ while salir==False:
                 else:
                     break
             elif opmenu =="3":
-                
-                print BILL()
-                
-                opcionmenu=raw_input("To return to the menu y/n: ")
-                if opcionmenu.lower()=="y":
-                    salir=False
-                else:
-                    break
-            elif opmenu == "4":
-                limpiar()
-
-                salir()
+                break
+                sys.exit()
             
     except:
         'enter a valid option'
