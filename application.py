@@ -7,6 +7,7 @@ import sys
 ARTICLis={}
 TOTALONE=06
 
+
 def insert_product():
     limpiar()
     BOX = True
@@ -188,7 +189,6 @@ def BILL():
         except:
             opcion3=True
     print"Thank you for your purchase, come back soon."
-
 
 def limpiar():
     os.system("reset")
