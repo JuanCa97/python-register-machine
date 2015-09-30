@@ -3,11 +3,8 @@
 """Register Machine"""
 import os
 import sys
-
 ARTICLis={}
 TOTALONE=06
-
-
 def insert_product():
     limpiar()
     BOX = True
@@ -35,43 +32,40 @@ def insert_product():
                 BOX=False
         else:
             print "their existing articlis  are:"
-
     for KEY in ARTICLis:
         print KEY,":",ARTICLis[KEY]
-
-
 def shopping():
-    limpiar()
-    if len(ARTICLis)>0:
+    if ARTICLis != {}:
         BOXTWO=True
-        TOTAL=0
+        ARTICLis2 = []
         while BOXTWO==True:
             for KEY in ARTICLis:
                 print KEY,":",ARTICLis[KEY]
             PRODUCT=raw_input("Products that want to take?")
+            ARTICLis2.append(PRODUCT)
             for TheEMENT in ARTICLis:
+                print "you chose %s"%(TheEMENT)
+                print ARTICLis2
+                
+                QUANTITY = ARTICLis2.count(PRODUCT)
+                CANT=QUANTITY * ARTICLis[TheEMENT]
                 if TheEMENT==PRODUCT:
-                    print "you chose %s"%(TheEMENT)
-                    QUANTITY=input("any amounts ofsired product?")
-                    CANT=QUANTITY*ARTICLis[TheEMENT]
-                    TOTAL=TOTAL+CANT
-                    
-                    print "article %s: quantity %s: subtotal invoice Q.%s "%(TheEMENT, QUANTITY,TOTAL )
-                    RisPONSE=True
+                    print "article %s: quantity %s: subtotal invoice Q.%s "%(TheEMENT, QUANTITY,CANT )
+                retu = True
+                while retu == True:
                     FOLLOW=raw_input("To Stheect a different item y/n:")
                     if FOLLOW.lower()=="y":
                         BOXTWO=True
-                        RisPONSE=False
+                        retu = False
                     elif FOLLOW.lower()=="n":
                         BOXTWO=False
-                        RisPONSE=False
-                        return TOTAL
-                        
-                    else:
-                        print "option invalidatis"
-                        RisPONSE=True
+                        retu = False
+                        return CANT
+                else:
+                    retu = True
         else:
             print "No existing products"
+            Menu()
 def ASD():
     CASH = ""
     while type(CASH) == str:
@@ -80,9 +74,7 @@ def ASD():
             CASH = int(raw_input("CASH :  "))
         except Exception, e:
             pass
-
     return CASH
-
 def BILL():
     limpiar()
     BOXTWO=True
@@ -95,6 +87,7 @@ def BILL():
             if CARD.isalpha()==False:
                 #ingreso of producto
                 if CARD=="1":
+                    limpiar()
                     print "Gold"
                     print u"The client has a 5%  discount:"
                     print "The subtotal of the invoice is Q.%s" %(TOTALONE)
@@ -119,14 +112,13 @@ def BILL():
                             print "CHANGE:   %s"%(CHANGE)
                             j = False
                             BOXTWO = False
-
                                 
                         else:
                             print "esta malo"
                             j = True
-
                 #compra
                 elif CARD=="2":
+                    limpiar()
                     print "Silver"
                     print "The client has a 2%  discount:"
                     print "The subtotal of the bill is Q.%s"%(TOTALONE)
@@ -157,6 +149,7 @@ def BILL():
                             j = True
 #bill
                 elif CARD =="3":
+                    limpiar()
                     IVA = (TOTALONE*0.12)
                     ALLTOTAL = TOTALONE + IVA 
                     #  aqui comienza billción
@@ -169,7 +162,6 @@ def BILL():
                             nit = raw_input("NIT: ")
                             CASH = ASD()
                             CHANGE = CASH - TOTALONE
-
                             print ("__________________________")
                             print ("Price       %.2f\t") % TOTALONE
                             print ("IVA          %.2f\t") % IVA
@@ -189,15 +181,11 @@ def BILL():
         except:
             opcion3=True
     print"Thank you for your purchase, come back soon."
-
 def limpiar():
     os.system("reset")
-
-
 def salir():
     sys.exit()
 #menú
-
 salir=False
 while salir==False:
     print "Cash Register"
@@ -206,6 +194,7 @@ while salir==False:
     print "2.) Shopping"
     print "3.) Exit"
     opmenu = raw_input("insert numeric of Menu: ")
+    limpiar()
     try:
         if opmenu.isalpha()==False:
             if opmenu =="1":
