@@ -3,222 +3,205 @@
 """Register Machine"""
 import os
 import sys
-ARTICLis={}
-TOTALONE=06
+ARTICLIS = {}
+DICTIONARI_QUANTITY = {}
 def insert_product():
+    """function that checks the items entering and validates"""
     limpiar()
-    BOX = True
-    while BOX == True:
-        limpiar()
-        OPTION =raw_input("You want to enter a product? y/n: ")
-        if OPTION.isalpha()==True:
-            if OPTION.lower()=="y":
+    while True:
+        option = raw_input("You want to enter a product? y/n: ")
+        if option.isalpha() == True:
+            if option.lower() == "y":
                 while True:
                     limpiar()
-                    PRODUCT=raw_input("Insert a product: ")
-                    if PRODUCT.isalpha():
+                    product = raw_input("Insert a product: ")
+                    product = product.lower()
+                    if product.isalpha():
                         break
                     else:
                         print"unrecognized data numeric"
-                        
                 while True:
                     try:
-                        PRICE=float(raw_input("Insert the price of the product: "))
-                        ARTICLis[PRODUCT]=PRICE
+                        price = float(raw_input("Insert the price of the product: "))
+                        ARTICLIS[product] = price
                         break
                     except ValueError:
                         print"unrecognized data"
-            elif OPTION.lower()=="n":
-                BOX=False
-        else:
-            print "their existing articlis  are:"
-    for KEY in ARTICLis:
-        print KEY,":",ARTICLis[KEY]
-def shopping():
-    if ARTICLis != {}:
-        BOXTWO=True
-        ARTICLis2 = []
-        while BOXTWO==True:
-            for KEY in ARTICLis:
-                print KEY,":",ARTICLis[KEY]
-            PRODUCT=raw_input("Products that want to take?")
-            ARTICLis2.append(PRODUCT)
-            for TheEMENT in ARTICLis:
-                print "you chose %s"%(TheEMENT)
-                print ARTICLis2
-                
-                QUANTITY = ARTICLis2.count(PRODUCT)
-                CANT=QUANTITY * ARTICLis[TheEMENT]
-                if TheEMENT==PRODUCT:
-                    print "article %s: quantity %s: subtotal invoice Q.%s "%(TheEMENT, QUANTITY,CANT )
-                retu = True
-                while retu == True:
-                    FOLLOW=raw_input("To Stheect a different item y/n:")
-                    if FOLLOW.lower()=="y":
-                        BOXTWO=True
-                        retu = False
-                    elif FOLLOW.lower()=="n":
-                        BOXTWO=False
-                        retu = False
-                        return CANT
-                else:
-                    retu = True
-        else:
-            print "No existing products"
-            Menu()
-def ASD():
-    CASH = ""
-    while type(CASH) == str:
-        try:
-            #a = raw_input("entre al while")
-            CASH = int(raw_input("CASH :  "))
-        except Exception, e:
-            pass
-    return CASH
-def BILL():
-    limpiar()
-    BOXTWO=True
-    while BOXTWO==True:
-        print "1)Gold"
-        print "2)Silver"
-        print "3)Any"
-        CARD=raw_input("What kind of card do you have?: ")
-        try:
-            if CARD.isalpha()==False:
-                #ingreso of producto
-                if CARD=="1":
-                    limpiar()
-                    print "Gold"
-                    print u"The client has a 5%  discount:"
-                    print "The subtotal of the invoice is Q.%s" %(TOTALONE)
-                    IVA = (TOTALONE*0.12)
-                    DISCOUNT = (TOTALONE*0.05)
-                    ALLTOTAL = TOTALONE + IVA - DISCOUNT
-                    print "should: %s"%(TOTALONE)
-                    print "______________________"
-                    j = True
-                    while j == True:
-                        CLient_name = raw_input("Client name:  ")
-                        if CLient_name.isalpha()== True:
-                            nit = raw_input("NIT: ")
-                            CASH = ASD()
-                            CHANGE = CASH - TOTALONE
-                            print "__________________________"
-                            print ("Price       %.2f\t") % TOTALONE
-                            print ("IVA          %.2f\t") % IVA
-                            print ("Total        %.2f\t") % ALLTOTAL
-                            print ("CASH     %.2f\t") % CASH
-                            print "__________________________"
-                            print "CHANGE:   %s"%(CHANGE)
-                            j = False
-                            BOXTWO = False
-                                
-                        else:
-                            print "esta malo"
-                            j = True
-                #compra
-                elif CARD=="2":
-                    limpiar()
-                    print "Silver"
-                    print "The client has a 2%  discount:"
-                    print "The subtotal of the bill is Q.%s"%(TOTALONE)
-                    IVA = (TOTALONE*0.12)
-                    DISCOUNT = (TOTALONE*0.02)
-                    ALLTOTAL = TOTALONE + IVA - DISCOUNT
-                    # aqui comienza billción
-                    print "should: ",ALLTOTAL
-                    print ("______________________")
-                    j = True
-                    while j == True:
-                        CLient_name = raw_input("Client name: ")
-                        if CLient_name.isalpha() == True:
-                            nit = raw_input("NIT: ")
-                            CASH = ASD()
-                            CHANGE = CASH - ALLTOTAL
-                            print ("__________________________")
-                            print ("Price       %.2f\t") % TOTALONE
-                            print ("IVA          %.2f\t") % IVA
-                            print ("Total        %.2f\t") % ALLTOTAL
-                            print ("CASH     %.2f\t") % CASH
-                            print ("__________________________")
-                            print ("CHANGE:   "),CHANGE
-                            j = False
-                            BOXTWO=False
-                        else:
-                            print "error"
-                            j = True
-#bill
-                elif CARD =="3":
-                    limpiar()
-                    IVA = (TOTALONE*0.12)
-                    ALLTOTAL = TOTALONE + IVA 
-                    #  aqui comienza billción
-                    print "should: ",ALLTOTAL
-                    print ("______________________")
-                    j = True
-                    while j == True:
-                        CLient_name = raw_input("Client name:  ")
-                        if CLient_name.isalpha()== True:
-                            nit = raw_input("NIT: ")
-                            CASH = ASD()
-                            CHANGE = CASH - TOTALONE
-                            print ("__________________________")
-                            print ("Price       %.2f\t") % TOTALONE
-                            print ("IVA          %.2f\t") % IVA
-                            print ("Total        %.2f\t") % ALLTOTAL
-                            print ("CASH     %.2f\t") % CASH
-                            print ("__________________________")
-                            print ("CHANGE:   "),CHANGE
-                            j = False
-                            BOXTWO = False
-                        else:
-                            print "esta malo"
-                            j = True
-                else:
-                    print "Option invalidates"
-            else:
-                print "Unrecognized data numeric"
-        except:
-            opcion3=True
-    print"Thank you for your purchase, come back soon."
-def limpiar():
-    os.system("reset")
-def salir():
-    sys.exit()
-#menú
-salir=False
-while salir==False:
-    print "Cash Register"
-    print "¿What would you do?"
-    print "1.) Insert_product"
-    print "2.) Shopping"
-    print "3.) Exit"
-    opmenu = raw_input("insert numeric of Menu: ")
-    limpiar()
-    try:
-        if opmenu.isalpha()==False:
-            if opmenu =="1":
-                
-                insert_product()
-                opcionmenu=raw_input("To return to the menu y/n: ")
-                if opcionmenu.lower()=="y":
-                    salir=False
-                else:
-                    break
-            elif opmenu =="2":
-                limpiar()
-                TOTALONE= shopping()
-                print TOTALONE
-                print BILL()
-                opcionmenu=raw_input("To return to the menu y/n: ")
-                if opcionmenu.lower()=="y":
-                    limpiar()
-                    salir=False
-                else:
-                    break
-            elif opmenu =="3":
+            elif option.lower() == "n":
                 break
+        else:
+            print "their existing articlis are:"
+    for key in ARTICLIS:
+        print key, ":", "%.2f\t" %float(ARTICLIS[key])
+    raw_input("press enter to continue")
+    limpiar()
+    menu()
+def sell_articles():
+    """function that checks items that are stored"""
+    articlis2 = []
+    if ARTICLIS != {}:
+        product = "Key"
+        for key in ARTICLIS:
+            print key, ":", ARTICLIS[key]
+        while  True:
+            product = raw_input("products that want to take? ")
+            product = product.lower()
+            articlis2.append(product)
+            print "you chose %s"%(product)
+            print "Compras: " + str(articlis2)
+            if product == "Done" or product == "DONE" or product == "done":
+                limpiar()
+                total_price = 0.00
+                for i in ARTICLIS:
+                    cot = float(ARTICLIS[i]) * float(articlis2.count(i))
+                    unit = articlis2.count(i)
+                    print "Price of your " +str(unit) +" "+ i +"(s) is: $.""%.2f" %float(cot) + "\n"
+                    total_price += cot
+                print ("Sub Total: $. %.2f\t") % total_price
+                if "GOLD" in articlis2 or "gold" in articlis2 or "Gold" in articlis2:
+                    gold(total_price)
+                elif "silver" in articlis2:
+                    silver(total_price)
+                elif ("gold" in articlis2) and ("silver" in articlis2):
+                    gold(total_price)
+                elif "gold" != articlis2 and "silver" != articlis2:
+                    any1(total_price)
+    else:
+        print "No existing products"
+        raw_input("press enter to continue")
+        limpiar()
+        menu()
+def asd():
+    """cash function saves and verifies input"""
+    cash = 0.00
+    while cash == 0.00:
+        try:
+            cash = float(raw_input("cash :  "))
+        except ValueError:
+            pass
+    return cash
+def gold(total_price):
+    """invoice with 5%  discount"""
+    cash = 0.00
+    print "Gold Card"
+    print "The client has a 5%  discount:"
+    iva = total_price * 0.12
+    discount = (total_price * 0.05)
+    alltotal = total_price + iva - discount
+    print "_____________________________________________________________"
+    j = True
+    while j == True:
+        client_name = raw_input("Client name:  ")
+        if client_name.isalpha() == True:
+            raw_input("NIT: ")
+            totaiv = total_price + iva
+            print "_____________________________________________________________"
+            print ("Subtotal without iva is: - - - - - - -  %.2f\t") %total_price
+            print ("iva is:- - - - - - - - - - - - - - - -  %.2f\t") %iva
+            print "_____________________________________________________________"
+            print ("SUbtotal with iva is:- - - - - - - - -  %.2f\t") %totaiv
+            print ("your discount with the card is:- - - -  %.2f\t") %discount
+            print "_____________________________________________________________"
+            print ("Total with card discount:- - - - - - -  %.2f\t") %alltotal
+            cash = asd()
+            change = int(cash - alltotal)
+            print ("cash:- - - - - - - - - - - - - - - - -  %.2f\t") %cash
+            print "_____________________________________________________________"
+            print ("change:- - - - - - - - - - - - - - - -  %.2f\t")%change
+            j = False
+            print"Thank you for your purchase, come back soon."
+            raw_input("press enter to continue")
+            limpiar()
+            menu()
+def silver(total_price):
+    """invoice with 2%  discount"""
+    cash = 0.00
+    print "Silver Card"
+    print "The client has a 2%  discount:"
+    iva = total_price * 0.12
+    discount = (total_price * 0.02)
+    alltotal = total_price + iva - discount
+    print "_____________________________________________________________"
+    j = True
+    while j == True:
+        client_name = raw_input("Client name:  ")
+        if client_name.isalpha() == True:
+            raw_input("NIT: ")
+            totaiv = total_price + iva
+            print "_____________________________________________________________"
+            print ("Subtotal without iva is: - - - - - - -  %.2f\t") %total_price
+            print ("iva is:- - - - - - - - - - - - - - - -  %.2f\t") %iva
+            print "_____________________________________________________________"
+            print ("SUbtotal with iva is:- - - - - - - - -  %.2f\t") %totaiv
+            print ("your discount with the card is:- - - -  %.2f\t") %discount
+            print "_____________________________________________________________"
+            print ("Total with card discount:- - - - - - -  %.2f\t") %alltotal
+            cash = asd()
+            change = cash - alltotal
+            print ("cash:- - - - - - - - - - - - - - - - -  %.2f\t") % cash
+            print "_____________________________________________________________"
+            print ("change:- - - - - - - - - - - - - - - -  %.2f\t")%change
+            j = False
+            print"Thank you for your purchase, come back soon."
+            raw_input("press enter to continue")
+            limpiar()
+            menu()
+def any1(total_price):
+    """invoice with 0%  discount"""
+    cash = 0.00
+    print "Only cash"
+    print "The client has a 0%  discount:"
+    iva = (total_price * 0.12)
+    #alltotal = total_price + iva
+    print "_____________________________________________________________"
+    j = True
+    while j == True:
+        client_name = raw_input("Client name:  ")
+        if client_name.isalpha() == True:
+            raw_input("NIT: ")
+            totaiv = total_price + iva
+            print "_____________________________________________________________"
+            print ("Subtotal without iva is: - - - - - - -  %.2f\t") %total_price
+            print ("iva is:- - - - - - - - - - - - - - - -  %.2f\t") %iva
+            print "_____________________________________________________________"
+            print ("SUbtotal with iva is:- - - - - - - - -  %.2f\t") %totaiv
+            cash = asd()
+            change = cash - totaiv
+            print ("cash:- - - - - - - - - - - - - - - - -  %.2f\t") %cash
+            print "_____________________________________________________________"
+            print ("change:- - - - - - - - - - - - - - - -  %.2f\t")%change
+            j = False
+            print"Thank you for your purchase, come back soon."
+            raw_input("press enter to continue")
+            limpiar()
+            menu()
+def limpiar():
+    """clean the screen"""
+    os.system("reset")
+
+def salir():
+    """you call the exit function to terminate the program"""
+    sys.exit()
+def menu():
+    """displays the menu to select an option"""
+    whily = True
+    while whily == True:
+        print "cash Register"
+        print "¿What would you do?"
+        print "1.) Insert_product"
+        print "2.) Shopping"
+        print "3.) Exit"
+        opmenu = raw_input("insert numeric of Menu: ")
+        limpiar()
+        if opmenu.isalpha() == False:
+            if opmenu == "1":
+                insert_product()
+            elif opmenu == "2":
+                sell_articles()
+            elif opmenu == "3":
+                print "Good bye"
+                whily = False
                 sys.exit()
-            
-    except:
-        'enter a valid option'
+        elif opmenu != "1"or opmenu != "2" or opmenu != "3":
+            print "enter a valid option"
+menu()
