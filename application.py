@@ -30,7 +30,7 @@ def insert_product():
             elif option.lower() == "n":
                 break
         else:
-            print "their existing articlis are:"
+            print "unrecognized data"
     for key in ARTICLIS:
         print key, ":", "%.2f\t" %float(ARTICLIS[key])
     raw_input("press enter to continue")
@@ -46,10 +46,18 @@ def sell_articles():
         while  True:
             product = raw_input("products that want to take? ")
             product = product.lower()
-            articlis2.append(product)
-            print "you chose %s"%(product)
-            print "Compras: " + str(articlis2)
-            if product == "Done" or product == "DONE" or product == "done":
+            if product == product in ARTICLIS:
+                articlis2.append(product)
+                print "you chose %s"%(product)
+                print "Shopping: " + str(articlis2)
+                #True
+            elif product == "gold" or product == "silver":
+                articlis2.append(product)
+                print "Shopping: " + str(articlis2)
+            elif product != articlis2[0:] and product != "done":
+                print "we dont have this product"
+                #True
+            elif product == "Done" or product == "DONE" or product == "done":
                 limpiar()
                 total_price = 0.00
                 for i in ARTICLIS:
@@ -58,7 +66,7 @@ def sell_articles():
                     print "Price of your " +str(unit) +" "+ i +"(s) is: $.""%.2f" %float(cot) + "\n"
                     total_price += cot
                 print ("Sub Total: $. %.2f\t") % total_price
-                if "GOLD" in articlis2 or "gold" in articlis2 or "Gold" in articlis2:
+                if "gold" in articlis2:
                     gold(total_price)
                 elif "silver" in articlis2:
                     silver(total_price)
@@ -71,15 +79,6 @@ def sell_articles():
         raw_input("press enter to continue")
         limpiar()
         menu()
-def asd():
-    """cash function saves and verifies input"""
-    cash = 0.00
-    while cash == 0.00:
-        try:
-            cash = float(raw_input("cash :  "))
-        except ValueError:
-            pass
-    return cash
 def gold(total_price):
     """invoice with 5%  discount"""
     cash = 0.00
@@ -91,7 +90,7 @@ def gold(total_price):
     print "_____________________________________________________________"
     j = True
     while j == True:
-        client_name = raw_input("Client name:  ")
+        client_name = str(raw_input("Client name:  "))
         if client_name.isalpha() == True:
             raw_input("NIT: ")
             totaiv = total_price + iva
@@ -103,11 +102,7 @@ def gold(total_price):
             print ("your discount with the card is:- - - -  %.2f\t") %discount
             print "_____________________________________________________________"
             print ("Total with card discount:- - - - - - -  %.2f\t") %alltotal
-            cash = asd()
-            change = int(cash - alltotal)
-            print ("cash:- - - - - - - - - - - - - - - - -  %.2f\t") %cash
             print "_____________________________________________________________"
-            print ("change:- - - - - - - - - - - - - - - -  %.2f\t")%change
             j = False
             print"Thank you for your purchase, come back soon."
             raw_input("press enter to continue")
@@ -136,11 +131,7 @@ def silver(total_price):
             print ("your discount with the card is:- - - -  %.2f\t") %discount
             print "_____________________________________________________________"
             print ("Total with card discount:- - - - - - -  %.2f\t") %alltotal
-            cash = asd()
-            change = cash - alltotal
-            print ("cash:- - - - - - - - - - - - - - - - -  %.2f\t") % cash
             print "_____________________________________________________________"
-            print ("change:- - - - - - - - - - - - - - - -  %.2f\t")%change
             j = False
             print"Thank you for your purchase, come back soon."
             raw_input("press enter to continue")
@@ -165,11 +156,7 @@ def any1(total_price):
             print ("iva is:- - - - - - - - - - - - - - - -  %.2f\t") %iva
             print "_____________________________________________________________"
             print ("SUbtotal with iva is:- - - - - - - - -  %.2f\t") %totaiv
-            cash = asd()
-            change = cash - totaiv
-            print ("cash:- - - - - - - - - - - - - - - - -  %.2f\t") %cash
             print "_____________________________________________________________"
-            print ("change:- - - - - - - - - - - - - - - -  %.2f\t")%change
             j = False
             print"Thank you for your purchase, come back soon."
             raw_input("press enter to continue")
@@ -178,7 +165,6 @@ def any1(total_price):
 def limpiar():
     """clean the screen"""
     os.system("reset")
-
 def salir():
     """you call the exit function to terminate the program"""
     sys.exit()
