@@ -81,7 +81,6 @@ def sell_articles():
         menu()
 def gold(total_price):
     """invoice with 5%  discount"""
-    cash = 0.00
     print "Gold Card"
     print "The client has a 5%  discount:"
     iva = total_price * 0.12
@@ -110,7 +109,6 @@ def gold(total_price):
             menu()
 def silver(total_price):
     """invoice with 2%  discount"""
-    cash = 0.00
     print "Silver Card"
     print "The client has a 2%  discount:"
     iva = total_price * 0.12
@@ -139,7 +137,6 @@ def silver(total_price):
             menu()
 def any1(total_price):
     """invoice with 0%  discount"""
-    cash = 0.00
     print "Only cash"
     print "The client has a 0%  discount:"
     iva = (total_price * 0.12)
