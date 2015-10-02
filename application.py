@@ -48,23 +48,22 @@ def sell_articles():
             product = product.lower()
             if product == product in ARTICLIS:
                 articlis2.append(product)
-                print "you chose %s"%(product)
+                print "you choose %s"%(product)
                 print "Shopping: " + str(articlis2)
-                #True
             elif product == "gold" or product == "silver":
                 articlis2.append(product)
                 print "Shopping: " + str(articlis2)
             elif product != articlis2[0:] and product != "done":
                 print "we dont have this product"
-                #True
             elif product == "Done" or product == "DONE" or product == "done":
                 limpiar()
                 total_price = 0.00
                 for i in ARTICLIS:
                     cot = float(ARTICLIS[i]) * float(articlis2.count(i))
                     unit = articlis2.count(i)
-                    print "Price of your " +str(unit) +" "+ i +"(s) is: $.""%.2f" %float(cot) + "\n"
-                    total_price += cot
+                    if unit > 0:
+                        print "Price of your " +str(unit) +" "+ i +"(s) is: $.""%.2f" %float(cot) + "\n"
+                        total_price += cot
                 print ("Sub Total: $. %.2f\t") % total_price
                 if "gold" in articlis2:
                     gold(total_price)
@@ -82,7 +81,7 @@ def sell_articles():
 def gold(total_price):
     """invoice with 5%  discount"""
     print "Gold Card"
-    print "The client has a 5%  discount:"
+    print "The client has a 5%  discount"
     iva = total_price * 0.12
     discount = (total_price * 0.05)
     alltotal = total_price + iva - discount
@@ -110,7 +109,7 @@ def gold(total_price):
 def silver(total_price):
     """invoice with 2%  discount"""
     print "Silver Card"
-    print "The client has a 2%  discount:"
+    print "The client has a 2%  discount"
     iva = total_price * 0.12
     discount = (total_price * 0.02)
     alltotal = total_price + iva - discount
@@ -137,8 +136,7 @@ def silver(total_price):
             menu()
 def any1(total_price):
     """invoice with 0%  discount"""
-    print "Only cash"
-    print "The client has a 0%  discount:"
+    print "The client has a 0%  discount"
     iva = (total_price * 0.12)
     #alltotal = total_price + iva
     print "_____________________________________________________________"
